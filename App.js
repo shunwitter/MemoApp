@@ -8,16 +8,18 @@ import MemoCreateScreen from './src/screens/MemoCreateScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
 
+import ENV from './env.json';
+
 // eslint-disable-next-line
 require("firebase/firestore");
 
 const config = {
-  apiKey: 'AIzaSyCkwklsfDsKA8vd5Cn2pwHZZLcBLPIg8Pg',
-  authDomain: 'memoapp-ec175.firebaseapp.com',
-  databaseURL: 'https://memoapp-ec175.firebaseio.com',
-  projectId: 'memoapp-ec175',
-  storageBucket: 'memoapp-ec175.appspot.com',
-  messagingSenderId: '954272588142',
+  apiKey:             ENV.FIREBASE_API_KEY,
+  authDomain:         ENV.FIREBASE_AUTH_DOMAIN,
+  databaseURL:        ENV.FIREBASE_DB_URL,
+  projectId:          ENV.FIREBASE_PRJ_ID,
+  storageBucket:      ENV.FIREBASE_STORAGE,
+  messagingSenderId:  ENV.FIREBASE_SENDER_ID,
 };
 firebase.initializeApp(config);
 
