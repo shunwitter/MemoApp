@@ -37,7 +37,11 @@ class MemoDetailScreen extends React.Component {
           </Text>
         </View>
 
-        <CircleButton color="white" style={styles.editButton} onPress={() => { this.props.navigation.navigate('MemoEdit'); }}>
+        <CircleButton
+          color="white"
+          style={styles.editButton}
+          onPress={() => { this.props.navigation.navigate('MemoEdit', { memo }); }}
+        >
           {'\uf040'}
         </CircleButton>
       </View>
