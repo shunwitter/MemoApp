@@ -1,9 +1,9 @@
 {
   "expo": {
-    "name": "MemoApp",
-    "description": "An empty new project",
-    "slug": "MemoApp",
-    "privacy": "public",
+    "name": "Memott",
+    "description": "Simple Memo App",
+    "slug": "Memott",
+    "privacy": "private",
     "sdkVersion": "22.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,14 +11,15 @@
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "packagerOpts": {
       "assetExts": ["ttf", "mp4"]
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "jp.workabroad.memot"
     }
   }
 }
