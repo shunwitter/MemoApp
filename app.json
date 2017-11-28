@@ -3,7 +3,7 @@
     "name": "Memott",
     "description": "Simple Memo App",
     "slug": "Memott",
-    "privacy": "private",
+    "privacy": "unlisted",
     "sdkVersion": "22.0.0",
     "version": "1.0.1",
     "orientation": "portrait",
