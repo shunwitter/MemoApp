@@ -33,7 +33,7 @@ const App = StackNavigator({
   MemoCreate: { screen: MemoCreateScreen },
 }, {
   navigationOptions: {
-    headerTitle: 'Memot',
+    headerTitle: 'Memott',
     headerTintColor: '#fff',
     headerBackTitle: null,
     headerStyle: {
