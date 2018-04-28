@@ -5,7 +5,7 @@
     "slug": "Memott",
     "privacy": "unlisted",
     "sdkVersion": "22.0.0",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
     "icon": "./assets/icon.png",
@@ -22,7 +22,8 @@
       "bundleIdentifier": "jp.workabroad.memot"
     },
     "android": {
-      "package": "jp.workabroad.memot"
+      "package": "jp.workabroad.memot",
+      "versionCode": 2
     }
   }
 }
