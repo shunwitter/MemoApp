@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native';
+import { ActivityIndicator, Text, View } from 'react-native';
 import React from 'react';
 
 const Loading = (props) => {
@@ -7,6 +7,7 @@ const Loading = (props) => {
   return (
     <View style={styles.container}>
       <View>
+        <ActivityIndicator size="large" />
         <Text style={styles.text}>{text}</Text>
       </View>
     </View>
@@ -16,19 +17,14 @@ const Loading = (props) => {
 const styles = {
   container: {
     position: 'absolute',
-    top: 100,
-    right: 40,
-    left: 40,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 100,
-    borderRadius: 4,
-    backgroundColor: '#fff',
-    elevation: 3,
-    shadowOpacity: 0.8,
-    shadowRadius: 4,
-    shadowColor: 'rgba(0,0,0,0.5)',
-    shadowOffset: { width: 0, height: 4 },
+    backgroundColor: 'rgba(255,255,255,0.95)',
   },
   text: {
     fontSize: 16,

@@ -54,7 +54,7 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Loading text="ログイン中..." isLoading={this.state.isLoading} />
+        <Loading text="ログイン中" isLoading={this.state.isLoading} />
         <Text style={styles.title}>
           ログイン
         </Text>
