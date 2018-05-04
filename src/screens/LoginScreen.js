@@ -1,24 +1,47 @@
-import React from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
-import firebase from 'firebase';
 import { NavigationActions } from 'react-navigation';
+import { StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
+import Expo from 'expo';
+import React from 'react';
+import firebase from 'firebase';
+
+import Loading from '../elements/Loading';
 
 class LoginScreen extends React.Component {
   state = {
     email: '',
     password: '',
+    isLoading: true,
+  }
+
+  async componentDidMount() {
+    const email = await Expo.SecureStore.getItemAsync('email');
+    const password = await Expo.SecureStore.getItemAsync('password');
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(() => {
+        this.setState({ isLoading: false });
+        this.navigateToHome();
+      })
+      .catch(() => {
+        this.setState({ email: '', password: '', isLoading: false });
+      });
+  }
+
+  navigateToHome() {
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: 'Home' }),
+      ],
+    });
+    this.props.navigation.dispatch(resetAction);
   }
 
   handleSubmit() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
-        const resetAction = NavigationActions.reset({
-          index: 0,
-          actions: [
-            NavigationActions.navigate({ routeName: 'Home' }),
-          ],
-        });
-        this.props.navigation.dispatch(resetAction);
+        Expo.SecureStore.setItemAsync('email', this.state.email);
+        Expo.SecureStore.setItemAsync('password', this.state.password);
+        this.navigateToHome();
       })
       .catch(() => {
       });
@@ -31,6 +54,7 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Loading text="ログイン中" isLoading={this.state.isLoading} />
         <Text style={styles.title}>
           ログイン
         </Text>
