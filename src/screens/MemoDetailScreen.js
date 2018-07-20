@@ -5,8 +5,9 @@ import CircleButton from '../elements/CircleButton';
 
 const dateString = (date) => {
   if (date == null) { return ''; }
-  const str = date.toISOString();
-  return str.split('T')[0];
+  // firebaseのtimestampであれば、Date型に変換する
+  const dateObject = typeof date.toDate === 'undefined' ? date : date.toDate();
+  return dateObject.toISOString().split('T')[0];
 };
 
 class MemoDetailScreen extends React.Component {
@@ -25,6 +26,7 @@ class MemoDetailScreen extends React.Component {
 
   render() {
     const { memo } = this.state;
+    global.console.log('createdOn', memo.createdOn);
     return (
       <View style={styles.container}>
         <View>

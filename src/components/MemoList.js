@@ -3,8 +3,9 @@ import { StyleSheet, View, Text, TouchableHighlight, FlatList } from 'react-nati
 
 const dateString = (date) => {
   if (date == null) { return ''; }
-  const str = date.toISOString();
-  return str.split('T')[0];
+  // firebaseのtimestampであれば、Date型に変換する
+  const dateObject = typeof date.toDate === 'undefined' ? date : date.toDate();
+  return dateObject.toISOString().split('T')[0];
 };
 
 class MemoList extends React.Component {

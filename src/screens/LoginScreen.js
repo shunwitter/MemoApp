@@ -8,12 +8,13 @@ import Loading from '../elements/Loading';
 
 class LoginScreen extends React.Component {
   state = {
-    email: '',
-    password: '',
-    isLoading: true,
+    email: 'user1@example.com',
+    password: 'password',
+    isLoading: false,
   }
 
   async componentDidMount() {
+    /*
     const email = await Expo.SecureStore.getItemAsync('email');
     const password = await Expo.SecureStore.getItemAsync('password');
     firebase.auth().signInWithEmailAndPassword(email, password)
@@ -22,6 +23,7 @@ class LoginScreen extends React.Component {
         this.navigateToHome();
       })
       .catch();
+    */
   }
 
   navigateToHome() {

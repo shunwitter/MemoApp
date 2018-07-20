@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import firebase from 'firebase';
+import { db } from '../../App';
 
 import MemoList from '../components/MemoList';
 import CircleButton from '../elements/CircleButton';
@@ -13,7 +14,6 @@ class MemoListScreen extends React.Component {
 
   componentWillMount() {
     const { currentUser } = firebase.auth();
-    const db = firebase.firestore();
     db.collection(`users/${currentUser.uid}/memos`)
       .onSnapshot((snapshot) => {
         const memoList = [];
