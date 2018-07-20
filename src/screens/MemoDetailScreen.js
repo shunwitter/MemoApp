@@ -26,7 +26,6 @@ class MemoDetailScreen extends React.Component {
 
   render() {
     const { memo } = this.state;
-    global.console.log('createdOn', memo.createdOn);
     return (
       <View style={styles.container}>
         <View>
