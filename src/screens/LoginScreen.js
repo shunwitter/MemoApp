@@ -2,7 +2,7 @@ import React from 'react';
 import Expo from 'expo';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 import Loading from '../elements/Loading';
 
@@ -27,7 +27,7 @@ class LoginScreen extends React.Component {
   }
 
   navigateToHome() {
-    const resetAction = NavigationActions.reset({
+    const resetAction = StackActions.reset({
       index: 0,
       actions: [
         NavigationActions.navigate({ routeName: 'Home' }),

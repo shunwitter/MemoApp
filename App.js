@@ -1,4 +1,4 @@
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 import { Platform } from 'react-native';
 
@@ -32,7 +32,7 @@ db.settings({
 export { db };
 
 
-const App = StackNavigator({
+const App = createStackNavigator({
   Login:      { screen: LoginScreen },
   Signup:     { screen: SignupScreen },
   Home:       { screen: MemoListScreen },
