@@ -16,6 +16,7 @@ class MemoEditScreen extends React.Component {
     const { params } = this.props.navigation.state;
     this.setState({
       body: params.memo.body,
+      body2: params.memo.body,
       key: params.memo.key,
     });
   }
@@ -26,10 +27,11 @@ class MemoEditScreen extends React.Component {
     const docRef = db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key);
     docRef
       .update({
-        body: this.state.body,
+        body: this.state.body2, // WORKAROUND: bodyの代わりにbody2を使う
         createdOn: newDate, // firebase.firestore.FieldValue.serverTimestamp()
       })
       .then(() => {
+        this.setState({ body: this.state.body2 }); // WORKAROUND: bodyもここで更新しておく
         const { navigation } = this.props;
         navigation.state.params.returnMemo({
           body: this.state.body,
@@ -50,7 +52,7 @@ class MemoEditScreen extends React.Component {
           style={styles.memoEditInput}
           multiline
           value={this.state.body}
-          onChangeText={(text) => { this.setState({ body: text }); }}
+          onChangeText={(text) => { this.setState({ body2: text }); }}
           underlineColorAndroid="transparent"
           textAlignVertical="top"
         />
