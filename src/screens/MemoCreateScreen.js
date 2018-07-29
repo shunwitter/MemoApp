@@ -14,6 +14,9 @@ class MemoCreateScreen extends React.Component {
   handlePress() {
     const { currentUser } = firebase.auth();
     db.collection(`users/${currentUser.uid}/memos`).add({
+      // ReactNativeのバグ
+      // https://github.com/facebook/react-native/issues/18403
+      // WORKAROUND: bodyの代わりにbody2を使う
       body: this.state.body2,
       createdOn: new Date(),
     })

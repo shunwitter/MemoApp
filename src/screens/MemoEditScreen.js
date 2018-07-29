@@ -25,9 +25,12 @@ class MemoEditScreen extends React.Component {
     const { currentUser } = firebase.auth();
     const newDate = new Date();
     const docRef = db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key);
+    // ReactNativeのバグ
+    // https://github.com/facebook/react-native/issues/18403
+    // WORKAROUND: bodyの代わりにbody2を使う
     docRef
       .update({
-        body: this.state.body2, // WORKAROUND: bodyの代わりにbody2を使う
+        body: this.state.body2,
         createdOn: newDate, // firebase.firestore.FieldValue.serverTimestamp()
       })
       .then(() => {
