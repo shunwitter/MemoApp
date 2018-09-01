@@ -48,7 +48,7 @@ class MemoDetailScreen extends React.Component {
           style={styles.editButton}
           onPress={() => { this.props.navigation.navigate('MemoEdit', { memo, returnMemo: this.returnMemo.bind(this) }); }}
         >
-          {'\uf040'}
+          {'\uf303'}
         </CircleButton>
       </View>
     );
