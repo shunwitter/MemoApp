@@ -4,7 +4,7 @@
     "description": "An empty new project",
     "slug": "MemoApp",
     "privacy": "public",
-    "sdkVersion": "22.0.0",
+    "sdkVersion": "31.0.0",
     "version": "1.0.0",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
