@@ -5,8 +5,9 @@ import CircleButton from '../elements/CircleButton';
 
 const dateString = (date) => {
   if (date == null) { return ''; }
-  const str = date.toISOString();
-  return str.split('T')[0];
+  // firebaseのTimestamp型をDate型に変換する
+  const dateObject = date.toDate();
+  return dateObject.toISOString().split('T')[0];
 };
 
 class MemoDetailScreen extends React.Component {
@@ -43,12 +44,11 @@ class MemoDetailScreen extends React.Component {
         </View>
 
         <CircleButton
+          name="pencil"
           color="white"
           style={styles.editButton}
           onPress={() => { this.props.navigation.navigate('MemoEdit', { memo, returnMemo: this.returnMemo.bind(this) }); }}
-        >
-          {'\uf040'}
-        </CircleButton>
+        />
       </View>
     );
   }

@@ -11,7 +11,10 @@
     "react/prefer-stateless-function": 0,
     "react/jsx-filename-extension": 0,
     "react/prop-types": 0,
-    "react/jsx-no-bind": 0
+    "react/jsx-no-bind": 0,
+    "object-curly-newline": 0,
+    "react/destructuring-assignment": 0,
+    "react/no-access-state-in-setstate": 0
   },
   "parser": "babel-eslint"
 }

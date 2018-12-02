@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, KeyboardAvoidingView, TextInput } from 'react-native';
 
 import firebase from 'firebase';
+import { db } from '../../App';
 
 import CircleButton from '../elements/CircleButton';
 
@@ -21,14 +22,15 @@ class MemoEditScreen extends React.Component {
 
   handlePress() {
     const { currentUser } = firebase.auth();
-    const db = firebase.firestore();
     const newDate = new Date();
-    db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key)
+    const docRef = db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key);
+    docRef
       .update({
         body: this.state.body,
-        createdOn: newDate,
+        createdOn: newDate, // firebase.firestore.FieldValue.serverTimestamp()
       })
       .then(() => {
+        this.setState({ body: this.state.body }); // WORKAROUND: bodyもここで更新しておく
         const { navigation } = this.props;
         navigation.state.params.returnMemo({
           body: this.state.body,
@@ -37,7 +39,8 @@ class MemoEditScreen extends React.Component {
         });
         navigation.goBack();
       })
-      .catch(() => {
+      .catch((error) => {
+        global.console.log(error);
       });
   }
 
@@ -52,9 +55,7 @@ class MemoEditScreen extends React.Component {
           underlineColorAndroid="transparent"
           textAlignVertical="top"
         />
-        <CircleButton onPress={this.handlePress.bind(this)}>
-          {'\uf00c'}
-        </CircleButton>
+        <CircleButton name="check" onPress={this.handlePress.bind(this)} />
       </KeyboardAvoidingView>
     );
   }

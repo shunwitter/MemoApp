@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import firebase from 'firebase';
+import { db } from '../../App';
 
 import MemoList from '../components/MemoList';
 import CircleButton from '../elements/CircleButton';
@@ -13,7 +14,6 @@ class MemoListScreen extends React.Component {
 
   componentWillMount() {
     const { currentUser } = firebase.auth();
-    const db = firebase.firestore();
     db.collection(`users/${currentUser.uid}/memos`)
       .onSnapshot((snapshot) => {
         const memoList = [];
@@ -32,9 +32,7 @@ class MemoListScreen extends React.Component {
     return (
       <View style={styles.container}>
         <MemoList memoList={this.state.memoList} navigation={this.props.navigation} />
-        <CircleButton onPress={this.handlePress.bind(this)}>
-          {'\uf067'}
-        </CircleButton>
+        <CircleButton name="plus" onPress={this.handlePress.bind(this)} />
       </View>
     );
   }

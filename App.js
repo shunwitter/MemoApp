@@ -1,4 +1,4 @@
-import { StackNavigator } from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 import { Platform } from 'react-native';
 
@@ -23,8 +23,16 @@ const config = {
   messagingSenderId:  ENV.FIREBASE_SENDER_ID,
 };
 firebase.initializeApp(config);
+// firebase.firestore.setLogLevel('debug');
 
-const App = StackNavigator({
+const db = firebase.firestore();
+db.settings({
+  timestampsInSnapshots: true,
+});
+export { db };
+
+
+const App = createStackNavigator({
   Login:      { screen: LoginScreen },
   Signup:     { screen: SignupScreen },
   Home:       { screen: MemoListScreen },
@@ -32,7 +40,7 @@ const App = StackNavigator({
   MemoEdit:   { screen: MemoEditScreen },
   MemoCreate: { screen: MemoCreateScreen },
 }, {
-  navigationOptions: {
+  defaultNavigationOptions: {
     headerTitle: 'Memott',
     headerTintColor: '#fff',
     headerBackTitle: null,
@@ -55,4 +63,4 @@ const App = StackNavigator({
   },
 });
 
-export default App;
+export default createAppContainer(App);
