@@ -44,12 +44,11 @@ class MemoDetailScreen extends React.Component {
         </View>
 
         <CircleButton
+          name="pencil"
           color="white"
           style={styles.editButton}
           onPress={() => { this.props.navigation.navigate('MemoEdit', { memo, returnMemo: this.returnMemo.bind(this) }); }}
-        >
-          {'\uf303'}
-        </CircleButton>
+        />
       </View>
     );
   }

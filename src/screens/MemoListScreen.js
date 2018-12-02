@@ -32,9 +32,7 @@ class MemoListScreen extends React.Component {
     return (
       <View style={styles.container}>
         <MemoList memoList={this.state.memoList} navigation={this.props.navigation} />
-        <CircleButton onPress={this.handlePress.bind(this)}>
-          {'\uf067'}
-        </CircleButton>
+        <CircleButton name="plus" onPress={this.handlePress.bind(this)} />
       </View>
     );
   }

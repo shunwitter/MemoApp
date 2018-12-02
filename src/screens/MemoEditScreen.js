@@ -55,9 +55,7 @@ class MemoEditScreen extends React.Component {
           underlineColorAndroid="transparent"
           textAlignVertical="top"
         />
-        <CircleButton onPress={this.handlePress.bind(this)}>
-          {'\uf00c'}
-        </CircleButton>
+        <CircleButton name="check" onPress={this.handlePress.bind(this)} />
       </KeyboardAvoidingView>
     );
   }
