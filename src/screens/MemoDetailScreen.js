@@ -5,8 +5,8 @@ import CircleButton from '../elements/CircleButton';
 
 const dateString = (date) => {
   if (date == null) { return ''; }
-  // firebaseのtimestampであれば、Date型に変換する
-  const dateObject = typeof date.toDate === 'undefined' ? date : date.toDate();
+  // firebaseのTimestamp型をDate型に変換する
+  const dateObject = date.toDate();
   return dateObject.toISOString().split('T')[0];
 };
 
