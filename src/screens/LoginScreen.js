@@ -1,5 +1,5 @@
 import React from 'react';
-import Expo from 'expo';
+import { SecureStore } from 'expo';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import { NavigationActions, StackActions } from 'react-navigation';
@@ -15,8 +15,8 @@ class LoginScreen extends React.Component {
 
   async componentDidMount() {
     /*
-    const email = await Expo.SecureStore.getItemAsync('email');
-    const password = await Expo.SecureStore.getItemAsync('password');
+    const email = await SecureStore.getItemAsync('email');
+    const password = await SecureStore.getItemAsync('password');
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then(() => {
         this.setState({ isLoading: false });
@@ -39,8 +39,8 @@ class LoginScreen extends React.Component {
   handleSubmit() {
     firebase.auth().signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
-        Expo.SecureStore.setItemAsync('email', this.state.email);
-        Expo.SecureStore.setItemAsync('password', this.state.password);
+        SecureStore.setItemAsync('email', this.state.email);
+        SecureStore.setItemAsync('password', this.state.password);
         this.navigateToHome();
       })
       .catch();

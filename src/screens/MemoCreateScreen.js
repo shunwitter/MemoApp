@@ -8,20 +8,16 @@ import CircleButton from '../elements/CircleButton';
 class MemoCreateScreen extends React.Component {
   state = {
     body: '',
-    body2: '',
   }
 
   handlePress() {
     const { currentUser } = firebase.auth();
     db.collection(`users/${currentUser.uid}/memos`).add({
-      // ReactNativeのバグ
-      // https://github.com/facebook/react-native/issues/18403
-      // WORKAROUND: bodyの代わりにbody2を使う
-      body: this.state.body2,
+      body: this.state.body,
       createdOn: new Date(),
     })
       .then(() => {
-        this.setState({ body: this.state.body2 }); // WORKAROUND: bodyもここで更新しておく
+        this.setState({ body: this.state.body }); // WORKAROUND: bodyもここで更新しておく
         this.props.navigation.goBack();
       })
       .catch((error) => {
@@ -36,7 +32,7 @@ class MemoCreateScreen extends React.Component {
           style={styles.memoEditInput}
           multiline
           value={this.state.body}
-          onChangeText={(text) => { this.setState({ body2: text }); }}
+          onChangeText={(text) => { this.setState({ body: text }); }}
           textAlignVertical="top"
         />
         <CircleButton onPress={this.handlePress.bind(this)}>

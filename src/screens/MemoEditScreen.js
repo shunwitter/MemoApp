@@ -16,7 +16,6 @@ class MemoEditScreen extends React.Component {
     const { params } = this.props.navigation.state;
     this.setState({
       body: params.memo.body,
-      body2: params.memo.body,
       key: params.memo.key,
     });
   }
@@ -25,16 +24,13 @@ class MemoEditScreen extends React.Component {
     const { currentUser } = firebase.auth();
     const newDate = new Date();
     const docRef = db.collection(`users/${currentUser.uid}/memos`).doc(this.state.key);
-    // ReactNativeのバグ
-    // https://github.com/facebook/react-native/issues/18403
-    // WORKAROUND: bodyの代わりにbody2を使う
     docRef
       .update({
-        body: this.state.body2,
+        body: this.state.body,
         createdOn: newDate, // firebase.firestore.FieldValue.serverTimestamp()
       })
       .then(() => {
-        this.setState({ body: this.state.body2 }); // WORKAROUND: bodyもここで更新しておく
+        this.setState({ body: this.state.body }); // WORKAROUND: bodyもここで更新しておく
         const { navigation } = this.props;
         navigation.state.params.returnMemo({
           body: this.state.body,
@@ -55,7 +51,7 @@ class MemoEditScreen extends React.Component {
           style={styles.memoEditInput}
           multiline
           value={this.state.body}
-          onChangeText={(text) => { this.setState({ body2: text }); }}
+          onChangeText={(text) => { this.setState({ body: text }); }}
           underlineColorAndroid="transparent"
           textAlignVertical="top"
         />
