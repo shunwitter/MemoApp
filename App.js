@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation';
+import { createAppContainer, createStackNavigator } from 'react-navigation';
 import firebase from 'firebase';
 import { Platform } from 'react-native';
 
@@ -40,7 +40,7 @@ const App = createStackNavigator({
   MemoEdit:   { screen: MemoEditScreen },
   MemoCreate: { screen: MemoCreateScreen },
 }, {
-  navigationOptions: {
+  defaultNavigationOptions: {
     headerTitle: 'Memott',
     headerTintColor: '#fff',
     headerBackTitle: null,
@@ -63,4 +63,4 @@ const App = createStackNavigator({
   },
 });
 
-export default App;
+export default createAppContainer(App);
