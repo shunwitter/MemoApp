@@ -23,14 +23,6 @@ const config = {
   messagingSenderId:  ENV.FIREBASE_SENDER_ID,
 };
 firebase.initializeApp(config);
-// firebase.firestore.setLogLevel('debug');
-
-const db = firebase.firestore();
-db.settings({
-  timestampsInSnapshots: true,
-});
-export { db };
-
 
 const App = createStackNavigator({
   Login:      { screen: LoginScreen },

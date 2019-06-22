@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, KeyboardAvoidingView, TextInput } from 'react-native';
 import firebase from 'firebase';
-import { db } from '../../App';
 
 import CircleButton from '../elements/CircleButton';
 
@@ -11,6 +10,8 @@ class MemoCreateScreen extends React.Component {
   }
 
   handlePress() {
+    const db = firebase.firestore();
+    db.settings({ timestampsInSnapshots: true });
     const { currentUser } = firebase.auth();
     db.collection(`users/${currentUser.uid}/memos`).add({
       body: this.state.body,
