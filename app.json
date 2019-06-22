@@ -4,7 +4,7 @@
     "description": "Simple Memo App",
     "slug": "Memott",
     "privacy": "unlisted",
-    "sdkVersion": "31.0.0",
+    "sdkVersion": "33.0.0",
     "version": "1.0.2",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
