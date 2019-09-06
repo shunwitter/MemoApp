@@ -1,5 +1,5 @@
 import React from 'react';
-import { SecureStore } from 'expo';
+import * as SecureStore from 'expo-secure-store';
 import { StyleSheet, View, Text, TextInput, TouchableHighlight, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import { NavigationActions, StackActions } from 'react-navigation';
