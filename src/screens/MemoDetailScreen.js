@@ -15,7 +15,7 @@ class MemoDetailScreen extends React.Component {
     memo: {},
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { params } = this.props.navigation.state;
     this.setState({ memo: params.memo });
   }
