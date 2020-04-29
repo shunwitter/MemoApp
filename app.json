@@ -4,7 +4,6 @@
     "description": "Simple Memo App",
     "slug": "Memott",
     "privacy": "unlisted",
-    "sdkVersion": "33.0.0",
     "version": "1.0.2",
     "orientation": "portrait",
     "primaryColor": "#cccccc",
@@ -15,7 +14,10 @@
       "backgroundColor": "#ffffff"
     },
     "packagerOpts": {
-      "assetExts": ["ttf", "mp4"]
+      "assetExts": [
+        "ttf",
+        "mp4"
+      ]
     },
     "ios": {
       "supportsTablet": true,
