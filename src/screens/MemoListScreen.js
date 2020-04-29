@@ -13,7 +13,6 @@ class MemoListScreen extends React.Component {
 
   componentWillMount() {
     const db = firebase.firestore();
-    db.settings({ timestampsInSnapshots: true });
     const { currentUser } = firebase.auth();
     db.collection(`users/${currentUser.uid}/memos`)
       .onSnapshot((snapshot) => {

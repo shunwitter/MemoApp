@@ -21,7 +21,6 @@ class MemoEditScreen extends React.Component {
 
   handlePress() {
     const db = firebase.firestore();
-    db.settings({ timestampsInSnapshots: true });
     const { currentUser } = firebase.auth();
     // returnMemo に渡すので new Date() ではなくて firestore の Timestamp 型を直接使う
     const newDate = firebase.firestore.Timestamp.now();
