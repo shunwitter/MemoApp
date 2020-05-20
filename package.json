@@ -6,10 +6,10 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "dependencies": {
-    "@expo/vector-icons": "10.0.0",
+    "@expo/vector-icons": "10.2.0",
     "@react-native-community/masked-view": "0.1.10",
     "expo": "37.0.0",
-    "expo-font": "8.1.0",
+    "expo-font": "8.1.1",
     "expo-secure-store": "8.1.0",
     "firebase": "7.9.0",
     "react": "16.9.0",
